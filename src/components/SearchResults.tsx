@@ -45,7 +45,7 @@ export const SearchResults = ({ showResults, setShowResults }: Props) => {
 						}`}
 					onClick={() => onPlaceClick(place)}
 				>
-					<p style={{ fontSize: "12px" }}>
+					<p style={{ fontSize: "10px" }}>
 						{place.place_name}
 					</p>
 

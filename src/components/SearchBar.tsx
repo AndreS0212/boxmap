@@ -1,10 +1,8 @@
 import { ChangeEvent, useContext, useRef, useState } from 'react';
 import { PlacesContext } from '../context';
 import { SearchResults } from './SearchResults';
-interface Props {
-  setActualPlace: (place: string) => void;
-}
-export const SearchBar = ({ setActualPlace }: Props) => {
+
+export const SearchBar = () => {
   const debouncedRef = useRef<NodeJS.Timeout>();
   const { searchPlacesByTearm, setPlace } = useContext(PlacesContext)
   const [showResults, setShowResults] = useState(true);
@@ -20,7 +18,6 @@ export const SearchBar = ({ setActualPlace }: Props) => {
 
     if (debouncedRef.current)
       clearTimeout(debouncedRef.current);
-    setActualPlace(value)
     debouncedRef.current = setTimeout(() => {
 
       searchPlacesByTearm(value)

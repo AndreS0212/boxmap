@@ -39,8 +39,10 @@ export const MapProvider = ({ children }: Props) => {
 				.addTo(state.map!);
 			let marketElement = newMarker.getElement();
 			marketElement?.addEventListener("click", () => {
-				redirectToMaps(lng, lat);
+				redirectToUrlMaps(lng, lat);
 			});
+			marketElement.style.cursor = "pointer";
+
 
 
 			newMarkers.push(newMarker);
@@ -52,7 +54,7 @@ export const MapProvider = ({ children }: Props) => {
 
 	}, [places, state.map]);
 
-	const redirectToMaps = (lng: number, lat: number) => {
+	const redirectToUrlMaps = (lng: number, lat: number) => {
 		//know if is a mobile device or not
 		const isAndroid = /Android/i.test(navigator.userAgent);
 		const isIos = /iPhone|iPad|iPod/i.test(navigator.userAgent);
