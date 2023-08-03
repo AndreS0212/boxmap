@@ -1,4 +1,4 @@
-import { Loading, SearchBar } from "./";
+import { BtnMyLocation, Loading, SearchBar } from "./";
 import { MapContext, PlacesContext } from "../context";
 import { useContext, useEffect, useLayoutEffect, useRef, useState } from "react";
 import mapboxgl, { LngLat, Marker } from "mapbox-gl";
@@ -16,7 +16,6 @@ export const MapView = ({ width, height }: MapViewProps) => {
 	const { setMap } = useContext(MapContext)
 	const [isMapLocked, setIsMapLocked] = useState(true);
 	const [styleIndex, setStyleIndex] = useState(0); // Índice del estilo actualmente seleccionado
-
 	const mapRef = useRef<mapboxgl.Map>();
 	const [marker, setMarker] = useState<mapboxgl.Marker>();
 	const mapDiv = useRef<HTMLDivElement>(null);
