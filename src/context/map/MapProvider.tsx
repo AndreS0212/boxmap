@@ -26,46 +26,36 @@ export const MapProvider = ({ children }: Props) => {
 	const [state, dispatch] = useReducer(MapReducer, INITIAL_STATE);
 	const { places } = useContext(PlacesContext);
 
-	useEffect(() => {
-		state.markers.forEach((marker) => marker.remove());
-		const newMarkers: Marker[] = [];
+	// useEffect(() => {
+	// 	state.markers.forEach((marker) => marker.remove());
+	// 	const newMarkers: Marker[] = [];
 
-		for (const place of places) {
-			const [lng, lat] = place.center;
-
-
-			const newMarker = new Marker()
-				.setLngLat([lng, lat])
-				.addTo(state.map!);
-			let marketElement = newMarker.getElement();
-			marketElement?.addEventListener("click", () => {
-				redirectToUrlMaps(lng, lat);
-			});
-			marketElement.style.cursor = "pointer";
+	// 	for (const place of places) {
+	// 		const [lng, lat] = place.center;
 
 
 
-			newMarkers.push(newMarker);
-		}
+	// 		const newMarker = new Marker()
+	// 			.setLngLat([lng, lat])
+	// 			.addTo(state.map!);
+	// 		let marketElement = newMarker.getElement();
+	// 		marketElement?.addEventListener("click", () => {
+	// 			redirectToUrlMaps(lng, lat);
+	// 		});
+	// 		marketElement.style.cursor = "pointer";
 
-		dispatch({ type: "setMarkers", payload: newMarkers });
 
-		state.map?.resize();
 
-	}, [places, state.map]);
+	// 		newMarkers.push(newMarker);
+	// 	}
 
-	const redirectToUrlMaps = (lng: number, lat: number) => {
-		//know if is a mobile device or not
-		const isAndroid = /Android/i.test(navigator.userAgent);
-		const isIos = /iPhone|iPad|iPod/i.test(navigator.userAgent);
-		if (isAndroid) {
-			window.location.href = `geo:${lat},${lng}?q=${lat},${lng}`;
-		} else if (isIos) {
-			window.open(`http://maps.apple.com/?q=${lat},${lng}`, "_blank");
-		} else {
-			window.open(`https://www.google.com/maps/search/?api=1&query=${lat},${lng}`, "_blank");
-		}
-	};
+	// 	dispatch({ type: "setMarkers", payload: newMarkers });
+
+	// 	state.map?.resize();
+
+	// }, [places, state.map]);
+
+
 
 
 

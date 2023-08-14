@@ -8,8 +8,7 @@ const searchAPI = axios.create({
     overview: "simplified",
     steps: false,
     limit: 5,
-    access_token:
-      "pk.eyJ1IjoiYW5kcmVzMDIxMiIsImEiOiJjbGtzcXh3ZGgwNjVrM2dyMGVwajg5NWZwIn0.2Azv717Np8mP_0KhSewMHw",
+    access_token: process.env.REACT_APP_MAPBOX_TOKEN || "pk.",
   },
 });
 
